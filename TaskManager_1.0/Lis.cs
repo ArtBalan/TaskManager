@@ -40,8 +40,8 @@ namespace TaskManager_1._0
         public void PrintTasks()
         {
             int h;
-            if (Console.WindowHeight > 15) h = 10;
-            else h = 5;
+            if (Console.WindowHeight > 15 && Console.WindowWidth > 111) h = 10;
+            else h = 7;
 
             Console.SetCursorPosition(1, h);
             Console.WriteLine(this.name);

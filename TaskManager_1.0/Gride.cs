@@ -18,11 +18,11 @@ namespace TaskManager
                                      "                                                    __/ |          ",
                                      "                                                   |___/          "};
 
-        private String[] smallLogo = {"    _____        _     __  __                             ",
-                                      "   |_   _|_ _ __| |__ |  \\/  |__ _ _ _  __ _ __ _ ___ _ _ ",
-                                      "     | |/ _` (_-< / / | |\\/| / _` | ' \\/ _` / _` / -_) '_|",
-                                      "     |_|\\__,_/__/_\\_\\ |_|  |_\\__,_|_||_\\__,_\\__, \\___|_|  ",
-                                      "                                            |___/         "};
+        private String[] smallLogo = {"  _____        _     __  __                             ",
+                                      " |_   _|_ _ __| |__ |  \\/  |__ _ _ _  __ _ __ _ ___ _ _ ",
+                                      "   | |/ _` (_-< / / | |\\/| / _` | ' \\/ _` / _` / -_) '_|",
+                                      "   |_|\\__,_/__/_\\_\\ |_|  |_\\__,_|_||_\\__,_\\__, \\___|_|  ",
+                                      "                                          |___/         "};
 
 
         public Gride(int w, int h)
@@ -85,20 +85,24 @@ namespace TaskManager
         {
             String[] tempStrArray;
             int h;
+            int l;
 
-            if (height > 15 && width > 72)
+            if (height > 15 && width > 111)
             {
                 h = 9;
+                l = 72;
                 tempStrArray = bigLogo;
             }
             else
             {
                 h = 6;
+                l = 63;
                 tempStrArray = smallLogo;
             }
 
             //logo box
             int w = width - 1;
+            //horizontal ligne
             for (int i = 0; i < width; i++)
             {
                 if (i == 0)
@@ -125,6 +129,16 @@ namespace TaskManager
                 Console.Write(tempStrArray[i]);
             }
 
+            //vertical ligne
+            Console.SetCursorPosition(l, 0);
+            Console.Write("╦");
+            for (int i = 1; i < h; i++)
+            {
+                Console.SetCursorPosition(l, i);
+                Console.Write("║");
+            }
+            Console.SetCursorPosition(l, h);
+            Console.Write("╩");
             PrintErrorBox();
         }
 

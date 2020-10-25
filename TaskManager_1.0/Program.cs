@@ -27,8 +27,8 @@ namespace TaskManager_1._0
         static public void PrintLis(List<Lis> lisList)
         {
             int h;
-            if (Console.WindowHeight > 15) h = 10;
-            else h = 5;
+            if (Console.WindowHeight > 15 && Console.WindowWidth > 111) h = 10;
+            else h = 7;
             Console.SetCursorPosition(1, h);
 
             for (int i = 0; i < lisList.Count; i++)
@@ -66,11 +66,6 @@ namespace TaskManager_1._0
                     }
                 }
             }
-
-
-
-
-
 
             //new grid creation
             Gride gride = new Gride(Console.WindowWidth, Console.WindowHeight);
@@ -121,6 +116,7 @@ namespace TaskManager_1._0
                         break;
 
                     case "open":
+                        gride.ClearScreen();
                         try
                         {
                             int tempint = Int16.Parse(input[1]);
