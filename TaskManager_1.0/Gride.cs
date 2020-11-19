@@ -140,6 +140,7 @@ namespace TaskManager
             Console.SetCursorPosition(l, h);
             Console.Write("╩");
             PrintErrorBox();
+            PrintInfoBox();
         }
 
         private void PrintErrorBox()
@@ -148,6 +149,32 @@ namespace TaskManager
             Console.Write("╠");
             for (int i = 0; i < width - 2; i++) Console.Write("═");
             Console.Write("╣");
+        }
+
+        private void PrintInfoBox()
+        {
+            int l;
+            System.DateTime date = System.DateTime.Now;
+
+
+            if (height > 15 && width > 111)
+            {
+                l = 73;
+
+                Console.SetCursorPosition(l, 1);
+                Console.Write("Date : " + date.ToString("MMM") + " " + date.Day + " " + date.ToString("yyyy"));
+
+
+            }
+            else
+            {
+                l = 63;
+            }
+
+
+
+
+
         }
 
         public void ClearScreen()
