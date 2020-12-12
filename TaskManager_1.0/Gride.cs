@@ -87,16 +87,22 @@ namespace TaskManager
             int h;
             int l;
 
-            if (height > 15 && width > 111)
+            if (height > 15 && width > 88)
             {
                 h = 9;
                 l = 72;
                 tempStrArray = bigLogo;
             }
-            else
+            else if (width > 72)
             {
                 h = 6;
-                l = 63;
+                l = 58;
+                tempStrArray = smallLogo;
+            }
+            else //error here
+            {
+                h = 6;
+                l = 0;
                 tempStrArray = smallLogo;
             }
 
@@ -130,17 +136,39 @@ namespace TaskManager
             }
 
             //vertical ligne
-            Console.SetCursorPosition(l, 0);
-            Console.Write("╦");
-            for (int i = 1; i < h; i++)
+            if (l != 0)
             {
-                Console.SetCursorPosition(l, i);
-                Console.Write("║");
+                Console.SetCursorPosition(l, 0);
+                Console.Write("╦");
+                for (int i = 1; i < h; i++)
+                {
+                    Console.SetCursorPosition(l, i);
+                    Console.Write("║");
+                }
+                Console.SetCursorPosition(l, h);
+                Console.Write("╩");
+                PrintInfoBox(l);
             }
-            Console.SetCursorPosition(l, h);
-            Console.Write("╩");
             PrintErrorBox();
-            PrintInfoBox();
+        }
+
+        private void PrintInfoBox(int l)
+        {
+            l += 1;
+            string toPrint = "";
+            System.DateTime date = System.DateTime.Now;
+
+
+            if (width >= 94 || (width >= 81 && width < 86))
+            {
+                toPrint = "Date : " + date.ToString("MMM") + " " + date.Day + " " + date.ToString("yyyy");
+            }
+            else if ((width >= 73 && width < 81) || (width >= 86 && width < 94))
+            {
+                toPrint = date.ToString("MMM") + " " + date.Day + " " + date.ToString("yyyy");
+            }
+            Console.SetCursorPosition(l, 1);
+            Console.Write(toPrint);
         }
 
         private void PrintErrorBox()
@@ -149,32 +177,6 @@ namespace TaskManager
             Console.Write("╠");
             for (int i = 0; i < width - 2; i++) Console.Write("═");
             Console.Write("╣");
-        }
-
-        private void PrintInfoBox()
-        {
-            int l;
-            System.DateTime date = System.DateTime.Now;
-
-
-            if (height > 15 && width > 111)
-            {
-                l = 73;
-
-                Console.SetCursorPosition(l, 1);
-                Console.Write("Date : " + date.ToString("MMM") + " " + date.Day + " " + date.ToString("yyyy"));
-
-
-            }
-            else
-            {
-                l = 63;
-            }
-
-
-
-
-
         }
 
         public void ClearScreen()
