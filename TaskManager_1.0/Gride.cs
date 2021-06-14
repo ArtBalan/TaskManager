@@ -80,7 +80,9 @@ namespace TaskManager
             PrintLogo();
             ClearInput();
         }
-
+        ///<summary>
+        ///Print the 2 border of the logoBox and the logo
+        ///</summary>
         private void PrintLogo()
         {
             String[] tempStrArray;
@@ -152,6 +154,9 @@ namespace TaskManager
             PrintErrorBox();
         }
 
+        ///<summary>
+        ///Print the content of the infoBox
+        ///</summary>
         private void PrintInfoBox(int l)
         {
             l += 1;
@@ -171,6 +176,9 @@ namespace TaskManager
             Console.Write(toPrint);
         }
 
+        ///<summary>
+        ///Print the top line of the error box
+        ///</summary>
         private void PrintErrorBox()
         {
             Console.SetCursorPosition(0, height - 5);
@@ -179,13 +187,19 @@ namespace TaskManager
             Console.Write("╣");
         }
 
+        ///<summary>
+        ///Clear the input and output field
+        ///</summary>
         public void ClearScreen()
         {
             ClearInput();
             ClearOutPut();
-            Error.clearLine();
+            Error.ClearLine();
         }
 
+        ///<summary>
+        ///Clear the output field
+        ///</summary>
         public void ClearOutPut()
         {
             for (int i = 1; i < width - 1; i++)
@@ -198,6 +212,9 @@ namespace TaskManager
             }
         }
 
+        ///<summary>
+        ///Clear the input field
+        ///</summary>
         public void ClearInput()
         {
             Console.SetCursorPosition(0, Console.WindowHeight - 2);

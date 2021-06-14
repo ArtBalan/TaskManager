@@ -14,9 +14,6 @@ namespace TaskManager_1._0
 
 
         //Constructor
-        public Lis() { }
-
-
         public Lis(string name)
         {
             this.name = name;
@@ -81,7 +78,7 @@ namespace TaskManager_1._0
                 gride.ClearInput();
                 Console.SetCursorPosition(0, Console.WindowHeight - 2);
                 input = Console.ReadLine().Split(' ');
-                Error.clearLine();
+                Error.ClearLine();
 
                 switch (input[0])
                 {

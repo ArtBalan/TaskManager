@@ -9,7 +9,10 @@ namespace TaskManager_1._0
     class Program
     {
 
-        //Fonction de validation
+
+        ///<summary>
+        /// Use this fonction to validate an action, return true if validated
+        ///</summary>
         static public bool Validation(int i)
         {
             Console.SetCursorPosition(0, Console.WindowHeight - 2);
@@ -23,7 +26,18 @@ namespace TaskManager_1._0
             else return false;
         }
 
-        //Affiche liste
+        static public bool Validation()
+        {
+            Console.SetCursorPosition(0, Console.WindowHeight - 2);
+            Console.Write("Confirm unkown action ? ");
+            String input = Console.ReadLine();
+            if (input == "y" || input == "Y") return true;
+            else return false;
+        }
+
+        ///<summary>
+        ///used to show all the lis form a list
+        ///</summary>
         static public void PrintLis(List<Lis> lisList)
         {
             int h;
@@ -77,7 +91,7 @@ namespace TaskManager_1._0
                 gride.ClearInput();
                 Console.SetCursorPosition(0, Console.WindowHeight - 2);
                 input = Console.ReadLine().Split(' ');
-                Error.clearLine();
+                Error.ClearLine();
 
                 switch (input[0])
                 {
@@ -238,22 +252,12 @@ namespace TaskManager_1._0
                 }
             }
         }
-        public static void WriteToJsonFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
-        {
-            TextWriter writer = null;
-            try
-            {
-                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
-                writer = new StreamWriter(filePath, append);
-                writer.Write(contentsToWriteToFile);
-            }
-            finally
-            {
-                if (writer != null)
-                    writer.Close();
-            }
-        }
 
+
+
+        ///<summary>
+        /// read all the lis form a json file
+        ///</summary>
         public static T ReadFromJsonFile<T>(string filePath) where T : new()
         {
             TextReader reader = null;
@@ -267,6 +271,25 @@ namespace TaskManager_1._0
             {
                 if (reader != null)
                     reader.Close();
+            }
+        }
+
+        ///<summary>
+        /// Write all the lis to a json file
+        ///</summary>
+        public static void WriteToJsonFile<T>(string filePath, T objectToWrite, bool append = false) where T : new()
+        {
+            TextWriter writer = null;
+            try
+            {
+                var contentsToWriteToFile = JsonConvert.SerializeObject(objectToWrite);
+                writer = new StreamWriter(filePath, append);
+                writer.Write(contentsToWriteToFile);
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
             }
         }
     }
